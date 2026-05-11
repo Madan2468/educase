@@ -1,0 +1,75 @@
+{
+  "info": {
+    "_postman_id": "c1f2b3e4-d5c6-7a8b-9c0d-1e2f3a4b5c6d",
+    "name": "School Management APIs",
+    "description": "Collection of APIs for the School Management system, including adding and listing schools by proximity.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Springfield Elementary\",\n  \"address\": \"123 Fake Street, Springfield\",\n  \"latitude\": 39.7817,\n  \"longitude\": -89.6501\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/addSchool",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        },
+        "description": "Adds a new school to the database."
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?latitude=39.7800&longitude=-89.6500",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "39.7800",
+              "description": "User's current latitude"
+            },
+            {
+              "key": "longitude",
+              "value": "-89.6500",
+              "description": "User's current longitude"
+            }
+          ]
+        },
+        "description": "Fetches a list of schools sorted by proximity to the user's location."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
